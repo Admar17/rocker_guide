@@ -37,4 +37,4 @@ docker-compose up
 
 4. Either enter http://localhost:8787/ in the browser or go to your Docker Desktop app and open in the browser from there.
 
-![](images/docker_screenshot.PNG)
+![](images/docker_screenshot.png)
