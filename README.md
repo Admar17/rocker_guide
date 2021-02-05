@@ -2,11 +2,12 @@
 
 ### Adding rocker container to n451:
 
-1. Go to your command line and run the following to pull the existing tidyverse image from [docker hub](https://hub.docker.com/r/rocker/tidyverse): 
+1. Go to your command line and run the following command to pull the existing rocker/tidyverse image from [docker hub](https://hub.docker.com/r/rocker/tidyverse): 
 
 ```
 docker pull rocker/tidyverse
 ```
+
 2. Copy the snippet below and paste it at the bottom of your existing docker-compose.yml file. If using VS Code, you may have to install the docker-compose.yml extension. The spacing and what not needs to be exactly right because it is a YAML file.
 
 ```yml
