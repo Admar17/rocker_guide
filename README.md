@@ -14,7 +14,8 @@ docker pull rocker/tidyverse
 rocker:
     image: rocker/tidyverse
     environment: 
-      - DISABLE_AUTH=true
+      - USER=rstudio
+      - PASSWORD=rstudio1234
     depends_on: 
       - db
     ports: 
