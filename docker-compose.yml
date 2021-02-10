@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ${DB_PATH}:/var/lib/postgresql/data
+      - ${MY_DB_PATH}:/var/lib/postgresql/data
     ports:
       - '5432:5432'
     networks:
