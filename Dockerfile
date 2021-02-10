@@ -5,11 +5,14 @@ FROM rocker/tidyverse:latest
 RUN apt-get update \
   && apt-get install -y openjdk-8-jdk
 
+# Install devtools
+RUN Rscript -e 'install.packages("devtools")'
+
 # Install sparklyr
-RUN install2.r --error --deps TRUE sparklyr
+RUN Rscript -e 'devtools::install_version("sparklyr", version = "1.5.2", dependencies = TRUE)'
 
 # Install spark
-RUN Rscript -e 'sparklyr::spark_install("2.3.0")'
+RUN Rscript -e 'sparklyr::spark_install(version = "3.0.0", hadoop_version = "3.2")'
 
 RUN mv /root/spark /opt/ && \
     chown -R rstudio:rstudio /opt/spark/ && \
