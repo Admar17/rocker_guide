@@ -1,0 +1,8 @@
+.env
+
+/data/postgresql
+/data/spark-warehouse
+
+.Rproj.user
+
+.Renviron

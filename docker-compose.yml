@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - ./data/postgresql:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - big_data
+
+  rocker_sparklyr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rocker_sparklyr
+    depends_on: 
+    - db
+    ports:
+      - "8787:8787"
+    env_file:
+      - .env
+    volumes:
+      - ./scripts:/home/rstudio/scripts
+      - ./data:/home/rstudio/data
+      - ./resources:/home/rstudio/resources
+    networks:
+      - big_data
+
+networks:
+  big_data:
