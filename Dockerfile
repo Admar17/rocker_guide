@@ -9,7 +9,7 @@ RUN apt-get update \
 RUN install2.r --error --deps TRUE sparklyr
 
 # Install spark
-RUN Rscript -e 'sparklyr::spark_install("2.3.0")'
+RUN Rscript -e 'sparklyr::spark_install("2.4.3")'
 
 RUN mv /root/spark /opt/ && \
     chown -R rstudio:rstudio /opt/spark/ && \
