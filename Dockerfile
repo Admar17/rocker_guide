@@ -18,6 +18,9 @@ RUN mv /root/spark /opt/ && \
     chown -R rstudio:rstudio /opt/spark/ && \
     ln -s /opt/spark/ /home/rstudio/
 
+RUN apt-get install unixodbc unixodbc-dev --install-suggests
+RUN apt-get install odbc-postgresql
+
 RUN install2.r --error --deps TRUE DBI
 RUN install2.r --error --deps TRUE RPostgres
 RUN install2.r --error --deps TRUE dbplyr
