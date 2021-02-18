@@ -15,7 +15,7 @@ RUN install2.r --error --deps TRUE sparklyr
 # RUN Rscript -e 'devtools::install_version("sparklyr", version = "1.5.2", dependencies = TRUE)'
 
 # Install spark
-RUN Rscript -e 'sparklyr::spark_install("2.4.3")'
+RUN Rscript -e 'sparklyr::spark_install("3.0.0")'
 
 RUN mv /root/spark /opt/ && \
     chown -R rstudio:rstudio /opt/spark/ && \
