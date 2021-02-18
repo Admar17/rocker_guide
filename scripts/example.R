@@ -7,7 +7,7 @@ source('scripts/connect_to_database.R')
 
 # install.packages('tictoc')
 # install.packages('janitor')
-# install.packages('arrow')
+# install.packages('arrow') # https://spark.rstudio.com/guides/arrow/
 
 # pre-installed
 
@@ -47,9 +47,24 @@ title_comp %>%
   arrange(desc(comp)) %>% 
   head(20)
 
-tic()
-dat_spark <- sparklyr::copy_to(sc, dat, "dat")
-toc()
+# https://spark.rstudio.com/dplyr/
+
+# tic()
+# dat_spark <- sparklyr::copy_to(sc, dat, "dat")
+# toc()
+
+# > tic()
+# > dat_spark <- sparklyr::copy_to(sc, dat, "dat")
+# Error: cannot allocate vector of size 100.0 Mb
+# > toc()
+# 236.071 sec elapsed
+
+df <- ggplot2::diamonds
+
+head(df)
+
+
+
 
 
 
