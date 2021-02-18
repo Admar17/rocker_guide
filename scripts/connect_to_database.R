@@ -1,5 +1,6 @@
-library(DBI)
-library(RPostgres)
+# connect to database
+# https://db.rstudio.com/databases/postgresql/
+# https://github.com/r-dbi/RPostgres
 
 con <- DBI::dbConnect(
   drv = RPostgres::Postgres(),
@@ -10,4 +11,4 @@ con <- DBI::dbConnect(
   password = Sys.getenv('POSTGRES_PASSWORD')
 )
 
-dbListTables(con)
+
