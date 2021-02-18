@@ -6,15 +6,11 @@ RUN apt-get update \
   && apt-get install -y openjdk-8-jdk
 
 # Install sparklyr
+
 RUN install2.r --error --deps TRUE sparklyr
 
-# Install devtools
-# RUN Rscript -e 'install.packages("devtools")'
-
-# # Install sparklyr
-# RUN Rscript -e 'devtools::install_version("sparklyr", version = "1.5.2", dependencies = TRUE)'
-
 # Install spark
+
 RUN Rscript -e 'sparklyr::spark_install("3.0.0")'
 
 RUN mv /root/spark /opt/ && \
