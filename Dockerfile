@@ -5,21 +5,17 @@ FROM rocker/tidyverse:latest
 RUN apt-get update \
   && apt-get install -y openjdk-8-jdk
 
-# Install devtools
-RUN Rscript -e 'install.packages("devtools")'
-
 # Install sparklyr
-RUN Rscript -e 'devtools::install_version("sparklyr", version = "1.5.2", dependencies = TRUE)'
+
+RUN install2.r --error --deps TRUE sparklyr
 
 # Install spark
-RUN Rscript -e 'sparklyr::spark_install(version = "3.0.0", hadoop_version = "3.2")'
+
+RUN Rscript -e 'sparklyr::spark_install("3.0.0")'
 
 RUN mv /root/spark /opt/ && \
     chown -R rstudio:rstudio /opt/spark/ && \
     ln -s /opt/spark/ /home/rstudio/
-
-RUN apt-get install unixodbc unixodbc-dev --install-suggests
-RUN apt-get install odbc-postgresql
 
 RUN install2.r --error --deps TRUE DBI
 RUN install2.r --error --deps TRUE RPostgres
